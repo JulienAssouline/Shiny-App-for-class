@@ -8,7 +8,6 @@ shinyServer(function(input, output){
   #reactive function, which creates graph and reacts to changes in input button, and slider.
   ScatterPlot <- reactive({ 
     BP_Pitcher_1967_2016 <- read.csv("BP Pitcher 1967 2016.csv", header=TRUE,check.names=FALSE)
-    BP_Pitcher_1967_2016_trends <- read.csv("BP_Pitcher_1967_2016_trends.csv", header=TRUE,check.names=FALSE)
     
     Filtered1 <- BP_Pitcher_1967_2016 %>%
       filter(
@@ -39,6 +38,7 @@ shinyServer(function(input, output){
   
   #create reactive function for line graph
   linechart <- reactive({ 
+        BP_Pitcher_1967_2016_trends <- read.csv("BP_Pitcher_1967_2016_trends.csv", header=TRUE,check.names=FALSE)
     Filtered2 <- BP_Pitcher_1967_2016_trends %>%
       filter(
         YEAR >= input$yearinput[1],
